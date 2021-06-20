@@ -1,4 +1,4 @@
 export class StudentModel {
-	nome: string | undefined;
-	email: string | undefined;
+	nome: string | undefined = 'Name Surname';
+	email: string | undefined = 'Email@email.com';
 }

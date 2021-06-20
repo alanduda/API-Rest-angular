@@ -1,14 +1,16 @@
-<form>
+<form #f="ngForm" (ngSubmit)="addStudent()">
   <div class="form-group row">
     <label for="name" class="col-sm-2 col-form-label">Student Name</label>
-    <input type="text" class="form-control" name="name" [(ngModel)]="student.nome" required>
+    <input type="text" class="form-control" name="name" [(ngModel)]="student.nome" required minlength="3" #name="ngModel">
+    <div *ngIf="!name.valid && name.touched"  class="alert alert-danger" role="alert" style="color: black;">Enter at least 3 characters</div>
   </div>
   <div class="form-group row">
     <label for="email" class="col-sm-2 col-form-label">Student Email</label>
-    <input type="email" class="form-control" name="email" [(ngModel)]="student.email" required>
+    <input type="email" class="form-control" name="email" [(ngModel)]="student.email" required #email="ngModel">
+    <div *ngIf="!email.valid && email.touched"  class="alert alert-danger" role="alert" style="color: black;">Invalid Email</div>
   </div>
   <div class="d-inline-flex p-2 bd-highlight">
-    <button class="btn btn-outline-success" type="button" (click)="addStudent()">Register</button>
+    <button class="btn btn-outline-success" [disabled]="!f.valid" type="submit">Register</button>
   </div>
 </form>
 

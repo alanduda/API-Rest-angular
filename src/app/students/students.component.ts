@@ -1,6 +1,7 @@
 import { StudentsService } from './../services/students.service';
 import { Component, OnInit } from '@angular/core';
 import { StudentModel } from '../models/student.model';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-students',
