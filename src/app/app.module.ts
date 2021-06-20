@@ -1,3 +1,4 @@
+import { StudentsService } from './services/students.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +15,7 @@ import { StudentsComponent } from './students/students.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [StudentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
