@@ -1,5 +1,6 @@
 import { StudentsService } from './../services/students.service';
 import { Component, OnInit } from '@angular/core';
+import { StudentModel } from '../models/student.model';
 
 @Component({
   selector: 'app-students',
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class StudentsComponent implements OnInit {
 
   public students: Array<any> = new Array();
+  public student: StudentModel = new StudentModel;
 
   constructor(private studentsService: StudentsService) { }
 
@@ -16,11 +18,31 @@ export class StudentsComponent implements OnInit {
     this.listStudents()
   }
 
-  private listStudents(): void {
+  public listStudents(): void {
     this.studentsService.getStudents().subscribe(
       students => { this.students = students },
-      err => { console.log('Erro ao obter Alunos ', err) }
+      err => { console.log('Error getting students: ', err) }
     );
   }
 
+  public deleteStudent(id: any): void {
+    this.listStudents();
+    this.studentsService.deleteStudent(id).subscribe(
+      student => {
+        this.student = new StudentModel;
+        this.listStudents();
+      },
+      err => { console.log('Error deleting students: ', err) }
+    );
+  }
+
+  public addStudent(): void {
+    this.studentsService.addStudent(this.student).subscribe(
+      student => {
+        this.student = new StudentModel;
+        this.listStudents();
+       },
+      err => { console.log('Error adding students: ', err) }
+    );
+  }
 }

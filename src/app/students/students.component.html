@@ -1,4 +1,18 @@
-<table class="table table-dark">
+<form>
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Student Name</label>
+    <input type="text" class="form-control" name="name" [(ngModel)]="student.nome" required>
+  </div>
+  <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Student Email</label>
+    <input type="email" class="form-control" name="email" [(ngModel)]="student.email" required>
+  </div>
+  <div class="d-inline-flex p-2 bd-highlight">
+    <button class="btn btn-outline-success" type="button" (click)="addStudent()">Register</button>
+  </div>
+</form>
+
+<table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">#ID</th>
@@ -12,7 +26,7 @@
       <td>{{student.id}}</td>
       <td>{{student.nome}}</td>
       <td>{{student.email}}</td>
-      <td><button class="btn btn-outline-danger">Remove</button></td>
+      <td><button class="btn btn-outline-danger" (click)="deleteStudent(student.id)">Remove</button></td>
     </tr>
   </tbody>
 </table>
