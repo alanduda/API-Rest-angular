@@ -1,3 +1,4 @@
+import { StudentUpdateModel } from './../models/student-update.model';
 import { StudentsService } from './../services/students.service';
 import { Component, OnInit } from '@angular/core';
 import { StudentModel } from '../models/student.model';
@@ -12,11 +13,17 @@ export class StudentsComponent implements OnInit {
 
   public students: Array<any> = new Array();
   public student: StudentModel = new StudentModel;
+  public studentUpdateModel: StudentUpdateModel = new StudentUpdateModel;
+  public openModal: boolean = false;
 
   constructor(private studentsService: StudentsService) { }
 
   ngOnInit(): void {
     this.listStudents()
+  }
+
+  public closeModal(): void {
+    this.openModal = false;
   }
 
   public listStudents(): void {
@@ -45,5 +52,13 @@ export class StudentsComponent implements OnInit {
        },
       err => { console.log('Error adding students: ', err) }
     );
+  }
+
+  public prepareStudentUpdate(id: any, name: string, email: string): void {
+    this.studentUpdateModel.id = id
+    this.studentUpdateModel.nome = name;
+    this.studentUpdateModel.email = email;
+
+    this.openModal = true;
   }
 }

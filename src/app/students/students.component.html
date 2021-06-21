@@ -28,9 +28,12 @@
       <td>{{student.id}}</td>
       <td>{{student.nome}}</td>
       <td>{{student.email}}</td>
-      <td><button class="btn btn-outline-danger" (click)="deleteStudent(student.id)">Remove</button></td>
+      <td>
+        <button class="btn btn-outline-info" type="button" (click)="prepareStudentUpdate(student.id, student.nome, student.email)">Update</button>
+        <button class="btn btn-outline-danger" type="button" (click)="deleteStudent(student.id)" style="margin-left: 8px;">Remove</button>
+      </td>
     </tr>
   </tbody>
 </table>
 
-<app-update-student-modal></app-update-student-modal>
+<app-update-student-modal *ngIf="openModal"></app-update-student-modal>
