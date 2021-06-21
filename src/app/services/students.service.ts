@@ -23,4 +23,8 @@ export class StudentsService {
   addStudent(student: StudentModel): Observable<any> {
     return this.http.post(this.clientUrl, student);
   }
+
+  updateStudent(id: any, student: StudentModel): Observable<any> {
+    return this.http.put(`${this.clientUrl}/${id}`, student);
+  }
 }
