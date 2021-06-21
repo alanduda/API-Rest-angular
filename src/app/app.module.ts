@@ -11,11 +11,13 @@ import { StudentsComponent } from './students/students.component';
 //Services
 import { StudentsService } from './services/students.service';
 import { FormsModule } from '@angular/forms';
+import { UpdateStudentModalComponent } from './update-student-modal/update-student-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentsComponent
+    StudentsComponent,
+    UpdateStudentModalComponent
   ],
   imports: [
     BrowserModule,
